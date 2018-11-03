@@ -5,6 +5,8 @@ import {
   action, getState, subscribe, subscribeSync, unsubscribe,
 } from 'statezero';
 
+const PACKAGE_NAME = 'statezero-react-hooks';
+
 const setStateByPath = action(({ commit, state }, path, value) => {
   set(state, path, value);
   commit(state);
@@ -26,7 +28,7 @@ export const useStatezero = (filter, isSync = false) => {
 
 export const useStatezeroPath = (path, isSync = false) => {
   if (!isString(path)) {
-    throw new Error(`statezero-react-hooks: useZeroPath() must be called with a String "path" argument; not ${path}`);
+    throw new Error(`${PACKAGE_NAME}: useStatezeroPath() must be called with a String "path" argument, not: ${path}`);
   }
 
   const state = useStatezero(path, isSync);
