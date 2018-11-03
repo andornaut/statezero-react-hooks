@@ -13,8 +13,9 @@ const setStateByPath = action(({ commit, state }, path, value) => {
 export const useStatezero = (filter, isSync = false) => {
   const initialState = getState(filter);
   const [state, setState] = useState(initialState);
+  const subscribeFn = isSync ? subscribeSync : subscribe;
   const effect = () => {
-    const subscription = (isSync ? subscribeSync : subscribe)(setState, filter);
+    const subscription = subscribeFn(setState, filter);
     return () => {
       unsubscribe(subscription);
     };
