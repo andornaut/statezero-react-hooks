@@ -1,41 +1,33 @@
-import isString from 'lodash-es/isString';
-import set from 'lodash-es/set';
 import { useEffect, useState } from 'react';
 import {
-  action, getState, subscribe, subscribeSync, unsubscribe,
+  getState, setState, subscribe, unsubscribe,
 } from 'statezero';
-
-const PACKAGE_NAME = 'statezero-react-hooks';
-
-const setStateByPath = action(({ commit, state }, path, value) => {
-  set(state, path, value);
-  commit(state);
-});
 
 export const useStatezero = (filter, isSync = false) => {
   const initialState = getState(filter);
-  const [state, setState] = useState(initialState);
-  const subscribeFn = isSync ? subscribeSync : subscribe;
+  // eslint-disable-next-line no-shadow
+  const [value, setValue] = useState(initialState);
   const effect = () => {
-    const subscription = subscribeFn(setState, filter);
+    const subscription = subscribe(setValue, filter, isSync);
     return () => {
       unsubscribe(subscription);
     };
   };
-  useEffect(effect, state);
-  return state;
+  useEffect(effect, value);
+  return value;
 };
 
 export const useStatezeroPath = (path, isSync = false) => {
-  if (!isString(path)) {
-    throw new Error(`${PACKAGE_NAME}: useStatezeroPath() must be called with a String "path" argument, not: ${path}`);
+  if (typeof path !== 'string' && !(path instanceof String)) {
+    const msg = `statezero-react-hooks: useStatezeroPath() must be called with a String "path" argument, not: ${path}`;
+    throw new Error(msg);
   }
 
-  const state = useStatezero(path, isSync);
-  const setState = (value) => {
-    setStateByPath(path, value);
+  const value = useStatezero(path, isSync);
+  const setValue = (newValue) => {
+    setState(path, newValue);
   };
-  return [state, setState];
+  return [value, setValue];
 };
 
 export const useStatezeroSync = filter => useStatezero(filter, true);

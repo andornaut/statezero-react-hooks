@@ -7,9 +7,6 @@ module.exports = (env, argv = {}) => {
   const mode = argv.mode || 'production';
   return {
     externals: {
-      'lodash-es': 'lodash-es',
-      'lodash-es/isString': 'lodash-es/isString',
-      'lodash-es/set': 'lodash-es/set',
       react: {
         commonjs: 'react',
         commonjs2: 'react',
@@ -56,7 +53,6 @@ module.exports = (env, argv = {}) => {
     plugins: [new CleanWebpackPlugin(['dist'])],
     resolve: {
       alias: {
-        'lodash-es': path.resolve(__dirname, './node_modules/lodash-es'),
         react: path.resolve(__dirname, './node_modules/react'),
         statezero: path.resolve(__dirname, './node_modules/statezero'),
       },
