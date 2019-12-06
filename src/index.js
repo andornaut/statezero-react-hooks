@@ -3,12 +3,12 @@ import {
   getState, setState, subscribe, unsubscribe,
 } from 'statezero';
 
-export const useStatezero = (filter, isSync = false) => {
-  const initialState = getState(filter);
+export const useStatezero = (selector, isSync = false) => {
+  const initialState = getState(selector);
   // eslint-disable-next-line no-shadow
   const [value, setValue] = useState(initialState);
   const effect = () => {
-    const subscription = subscribe(setValue, filter, isSync);
+    const subscription = subscribe(setValue, selector, isSync);
     return () => {
       unsubscribe(subscription);
     };
