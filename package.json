@@ -22,8 +22,8 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "~16.7.0-alpha.0",
-    "statezero": "~0"
+    "react": "*",
+    "statezero": "*"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",

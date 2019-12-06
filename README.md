@@ -8,7 +8,6 @@ Install from [npm](https://www.npmjs.com/package/statezero-react-hooks).
 
 ```bash
 # Install peer dependencies
-npm install lodash-es --save
 npm install react --save
 npm install statezero --save
 
@@ -33,11 +32,11 @@ import { useStatezero } from 'statezero-react-hooks/src';
 Provides the following functions:
 
 ```javascript
-import { useStatezero, useStatezeroPath, useStatezeroPathSync, useStatezeroSync, } from 'statezero-react-hooks';
+import { useStatezero, useStatezeroPath, useStatezeroPathSync, useStatezeroSync } from 'statezero-react-hooks';
 
 let state, setState;
-state = useStatezero(filter);
-state = useStatezeroSync(filter);
+state = useStatezero(selector);
+state = useStatezeroSync(selector);
 [state, setState] = useStatezeroPath(path);
 [state, setState] = useStatezeroPathSync(path);
 ```
@@ -47,8 +46,8 @@ state = useStatezeroSync(filter);
 ```javascript
 import { useStatezero, useStatezeroPath } from 'statezero-react-hooks/src';
 
-export const component = ({ filter }) => {
-  const state = useStatezero(filter);
+export const component = ({ selector }) => {
+  const state = useStatezero(selector);
   // ...
 }
 
