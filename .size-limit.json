@@ -1,0 +1,13 @@
+[
+  {
+    "name": "ESM (minified, external deps)",
+    "path": "dist/statezero-react-hooks.esm.js",
+    "limit": "2 KB",
+    "ignore": ["react", "statezero"]
+  },
+  {
+    "name": "UMD (minified, external deps)",
+    "path": "dist/statezero-react-hooks.js",
+    "limit": "2 KB"
+  }
+]

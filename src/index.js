@@ -1,35 +1,31 @@
-import { useEffect, useState } from 'react';
-import {
-  getState, setState, subscribe, unsubscribe,
-} from 'statezero';
+import { useEffect, useState } from "react";
+import { getState, setState, subscribe, unsubscribe } from "statezero";
 
 export const useStatezero = (selector, isSync = false) => {
   const initialState = getState(selector);
-  // eslint-disable-next-line no-shadow
   const [value, setValue] = useState(initialState);
-  const effect = () => {
+  useEffect(() => {
     const subscription = subscribe(setValue, selector, isSync);
     return () => {
       unsubscribe(subscription);
     };
-  };
-  useEffect(effect, value);
+  }, [selector, isSync]);
   return value;
 };
 
 export const useStatezeroPath = (path, isSync = false) => {
-  if (typeof path !== 'string' && !(path instanceof String)) {
+  if (typeof path !== "string" && !(path instanceof String)) {
     const msg = `statezero-react-hooks: useStatezeroPath() must be called with a String "path" argument, not: ${path}`;
     throw new Error(msg);
   }
 
   const value = useStatezero(path, isSync);
-  const setValue = (newValue) => {
+  const setPathValue = (newValue) => {
     setState(path, newValue);
   };
-  return [value, setValue];
+  return [value, setPathValue];
 };
 
-export const useStatezeroSync = filter => useStatezero(filter, true);
+export const useStatezeroSync = (selector) => useStatezero(selector, true);
 
-export const useStatezeroPathSync = path => useStatezeroPath(path, true);
+export const useStatezeroPathSync = (path) => useStatezeroPath(path, true);
