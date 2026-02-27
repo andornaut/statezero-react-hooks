@@ -4,7 +4,7 @@
 [![CI](https://github.com/andornaut/statezero-react-hooks/workflows/Release/badge.svg)](https://github.com/andornaut/statezero-react-hooks/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[React hooks](https://reactjs.org/docs/hooks-intro.html) for [statezero](https://github.com/andornaut/statezero).
+[React hooks](https://react.dev/reference/react/hooks) for [statezero](https://github.com/andornaut/statezero).
 
 ## Getting Started
 
@@ -70,7 +70,7 @@ function UserProfile() {
 
 Subscribe to a specific path in state. Returns a `[value, setValue]` tuple similar to React's `useState`.
 
-- `path` - Required. A string path in dot notation
+- `path` - Required. A dot notation string path (e.g., `"count"`, `"user.name"`, `"deeply.nested.value"`). Unlike `useStatezero`, this hook does **not** accept function or array selectors.
 - `isSync` - Optional. If true, updates are synchronous; otherwise debounced (default: false)
 
 ```javascript
@@ -139,12 +139,12 @@ String path selectors (e.g., `"user.name"`) don't have this issue since strings 
 
 ## API Reference
 
-| Hook                   | Arguments              | Returns           | Description                                      |
-| ---------------------- | ---------------------- | ----------------- | ------------------------------------------------ |
-| `useStatezero`         | `(selector?, isSync?)` | `value`           | Subscribe to state, return selected value        |
-| `useStatezeroSync`     | `(selector?)`          | `value`           | Synchronous version of useStatezero              |
-| `useStatezeroPath`     | `(path, isSync?)`      | `[value, setter]` | Subscribe to path, return value and setter tuple |
-| `useStatezeroPathSync` | `(path)`               | `[value, setter]` | Synchronous version of useStatezeroPath          |
+| Hook                   | Arguments              | Returns           | Description                                       |
+| ---------------------- | ---------------------- | ----------------- | ------------------------------------------------- |
+| `useStatezero`         | `(selector?, isSync?)` | `value`           | Subscribe to state, return selected value         |
+| `useStatezeroSync`     | `(selector?)`          | `value`           | Synchronous version of useStatezero               |
+| `useStatezeroPath`     | `(path, isSync?)`      | `[value, setter]` | Subscribe to string path, return value and setter |
+| `useStatezeroPathSync` | `(path)`               | `[value, setter]` | Synchronous version of useStatezeroPath           |
 
 ## Developing
 
