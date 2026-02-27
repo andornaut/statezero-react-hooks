@@ -158,6 +158,14 @@ npm run test:watch   # Run tests in watch mode
 npm run size         # Check bundle size limits
 ```
 
+## Publishing
+
+```bash
+npm version minor    # or major/patch - updates package.json and creates git tag
+git push && git push --tags
+npm publish
+```
+
 ## Related Projects
 
 - [statezero](https://github.com/andornaut/statezero) - The core state management library
