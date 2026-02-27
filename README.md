@@ -105,6 +105,38 @@ const count = useStatezeroSync("count");
 const [value, setValue] = useStatezeroPathSync("path.to.value");
 ```
 
+### Selector Stability
+
+When using function or array selectors, define them outside the component or memoize them to avoid resubscribing on every render:
+
+```javascript
+// Good: selector defined outside component
+const selectUser = (state) => state.user;
+
+function UserProfile() {
+  const user = useStatezero(selectUser);
+  return <div>{user?.name}</div>;
+}
+
+// Good: memoized selector
+function FilteredItems({ category }) {
+  const selector = useMemo(
+    () => (state) => state.items.filter((i) => i.category === category),
+    [category],
+  );
+  const items = useStatezero(selector);
+  return (
+    <ul>
+      {items.map((i) => (
+        <li key={i.id}>{i.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+String path selectors (e.g., `"user.name"`) don't have this issue since strings are primitives.
+
 ## API Reference
 
 | Hook                   | Arguments              | Returns           | Description                                      |
