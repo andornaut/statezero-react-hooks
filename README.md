@@ -1,7 +1,7 @@
 # statezero-react-hooks
 
 [![npm version](https://badge.fury.io/js/statezero-react-hooks.svg)](https://www.npmjs.com/package/statezero-react-hooks)
-[![CI](https://github.com/andornaut/statezero-react-hooks/workflows/Release/badge.svg)](https://github.com/andornaut/statezero-react-hooks/actions)
+[![CI](https://github.com/andornaut/statezero-react-hooks/actions/workflows/release.yml/badge.svg)](https://github.com/andornaut/statezero-react-hooks/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 [React hooks](https://react.dev/reference/react/hooks) for [statezero](https://github.com/andornaut/statezero).
