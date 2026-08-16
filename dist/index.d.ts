@@ -15,7 +15,10 @@ import { Selector } from "statezero";
  * const user = useStatezero(state => state.user);
  * const [a, b] = useStatezero(['path.a', 'path.b']);
  */
-export function useStatezero<T = unknown>(selector?: Selector, isSync?: boolean): T;
+export function useStatezero<T = unknown>(
+  selector?: Selector,
+  isSync?: boolean,
+): T;
 
 /**
  * Subscribe to a specific path in state.
@@ -31,7 +34,7 @@ export function useStatezero<T = unknown>(selector?: Selector, isSync?: boolean)
  */
 export function useStatezeroPath<T = unknown>(
   path: string,
-  isSync?: boolean
+  isSync?: boolean,
 ): [T, (newValue: T) => void];
 
 /**
@@ -50,4 +53,6 @@ export function useStatezeroSync<T = unknown>(selector?: Selector): T;
  * @param path - A dot-notation string path to the state value
  * @returns A tuple of [currentValue, setValueFunction]
  */
-export function useStatezeroPathSync<T = unknown>(path: string): [T, (newValue: T) => void];
+export function useStatezeroPathSync<T = unknown>(
+  path: string,
+): [T, (newValue: T) => void];
