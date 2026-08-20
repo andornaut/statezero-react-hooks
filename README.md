@@ -151,8 +151,8 @@ String path selectors (e.g., `"user.name"`) don't have this issue since strings 
 ```bash
 npm install
 npm run build        # Development build (UMD + ESM)
-npm run format       # Format code with prettier
-npm run lint         # ESLint with zero-warning policy
+npm run format       # Prettier write, then ESLint --fix
+npm run lint         # Prettier check, then ESLint with zero warnings
 npm run test         # Run tests with Jest
 npm run test:watch   # Run tests in watch mode
 npm run size         # Check bundle size limits
