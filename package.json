@@ -31,7 +31,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=20"
+    "node": ">=24.19.0"
   },
   "bugs": {
     "url": "https://github.com/andornaut/statezero-react-hooks/issues"
