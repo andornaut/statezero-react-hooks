@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/statezero-react-hooks)](https://www.npmjs.com/package/statezero-react-hooks)
 [![CI](https://github.com/andornaut/statezero-react-hooks/actions/workflows/release.yml/badge.svg)](https://github.com/andornaut/statezero-react-hooks/actions/workflows/release.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/MIT)
 
 [React hooks](https://react.dev/reference/react/hooks) for [statezero](https://github.com/andornaut/statezero).
 
