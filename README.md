@@ -148,8 +148,8 @@ String path selectors (e.g., `"user.name"`) don't have this issue since strings 
 
 ## Developing
 
-Docker and Make run verification without host dependencies. `make check` runs
-formatting, lint, Jest, development and production builds, and bundle size limits
+Docker 29.9.3 and Make run verification without host dependencies. `make check`
+runs formatting, lint, Jest, development and production builds, and bundle size limits
 in isolated containers. `npm run check`, `npm test`, `npm run lint`, and `npm run build`
 delegate to the corresponding Make targets.
 
@@ -167,6 +167,13 @@ npm run test:watch
 Checks use a source snapshot and write to scratch. `make build` exports
 `dist/`. `make exec` permits explicit project updates while protecting Git metadata.
 Internal npm scripts are used by the container dispatcher.
+
+The native pre-commit hook runs `make staged`, keeping automatic staged fixes and
+partial staging.
+Lint-staged manages Git on the host; Prettier and ESLint run in the project
+container. The hook requires Node and the lockfile's local lint-staged install.
+If container shutdown cannot be confirmed, the workflow preserves the working
+tree and backup stash and blocks its Git cleanup until the writer is resolved.
 
 ## Publishing
 
