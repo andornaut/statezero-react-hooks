@@ -149,7 +149,7 @@ String path selectors (e.g., `"user.name"`) don't have this issue since strings 
 ## Developing
 
 Docker 29.9.3 and Make run verification without host dependencies. `make check`
-runs formatting, lint, Jest, development and production builds, and bundle size limits
+runs formatting, Markdown, lint, Jest, development and production builds, and bundle size limits
 in isolated containers. `npm run check`, `npm test`, `npm run lint`, and `npm run build`
 delegate to the corresponding Make targets.
 
@@ -165,7 +165,7 @@ npm run test:watch
 ```
 
 Checks use a source snapshot and write to scratch. `make build` exports
-`dist/`. `make exec` permits explicit project updates while protecting Git metadata.
+the generated JavaScript bundles in `dist/`, preserving tracked declarations. `make exec` permits explicit project updates while protecting Git metadata.
 Internal npm scripts are used by the container dispatcher.
 
 The native pre-commit hook runs `make staged`, keeping automatic staged fixes and
