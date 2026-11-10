@@ -148,15 +148,25 @@ String path selectors (e.g., `"user.name"`) don't have this issue since strings 
 
 ## Developing
 
+Docker and Make run verification without host dependencies. `make check` runs
+formatting, lint, Jest, development and production builds, and bundle size limits
+in isolated containers. `npm run check`, `npm test`, `npm run lint`, and `npm run build`
+delegate to the corresponding Make targets.
+
 ```bash
-npm install
-npm run build        # Development build (UMD + ESM)
-npm run format       # Prettier write, then ESLint --fix
-npm run lint         # Prettier check, then ESLint with zero warnings
-npm run test         # Run tests with Jest
-npm run test:watch   # Run tests in watch mode
-npm run size         # Check bundle size limits
+make check
+make test TEST_ARGS='test/test_hooks.js'
+make lint
+make build
+make check-info
+make exec COMMAND='npm install'
+npm run format
+npm run test:watch
 ```
+
+Checks use a source snapshot and write to scratch. `make build` exports
+`dist/`. `make exec` permits explicit project updates while protecting Git metadata.
+Internal npm scripts are used by the container dispatcher.
 
 ## Publishing
 
