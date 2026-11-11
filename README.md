@@ -148,14 +148,19 @@ String path selectors (e.g., `"user.name"`) don't have this issue since strings 
 
 ## Developing
 
-Use `make check` for the complete automation gate in the project's test image.
+Use `make check` for the complete automation gate with stock Node.js and ShellCheck
+images. It does not build a project image.
 It runs formatting, Markdown, lint, Jest, development and production builds, and bundle size limits.
+
+Optional `make build` runs the build checks and exports `dist/statezero-react-hooks.esm.js` and `dist/statezero-react-hooks.js`.
+Other checks keep generated files in disposable scratch.
 
 Native npm commands run locally and do not delegate to Make. Select the Node.js
 version in `.nvmrc` and install the lockfile dependencies with `npm ci`.
 
 ```bash
 make check
+make build
 npm test -- test/test_hooks.js
 npm run lint
 npm run build
